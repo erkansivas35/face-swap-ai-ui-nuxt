@@ -1,4 +1,5 @@
 <script setup>
+import { ref, watch } from 'vue'
 import { toast } from 'vue3-toastify'
 
 const props = defineProps({
@@ -15,54 +16,51 @@ const props = defineProps({
 
 const emit = defineEmits(['update:modelValue'])
 
-const state = useState('state', () => ({
-  fileViews: null,
-}))
-
-const modelValue = useState('state', () => props.modelValue ?? null)
+const fileViews = ref(null)
+const modelValue = ref(props.modelValue ?? null)
 
 function onFileChange(e) {
-  const selectedFiles = e.target.files || e.dataTransfer?.files;
-  if (!selectedFiles || selectedFiles.length === 0) return;
+  const selectedFiles = e.target.files || e.dataTransfer?.files
+  if (!selectedFiles || selectedFiles.length === 0) return
 
-  const file = selectedFiles[0];
-  const maxSizeInBytes = 5 * 1024 * 1024; // 5 MB
+  const file = selectedFiles[0]
+  const maxSizeInBytes = 5 * 1024 * 1024 // 5 MB
 
   if (file.size > maxSizeInBytes) {
-    toast.error('File size exceeds 5 MB. Please upload a smaller file.');
-    return;
+    toast.error('File size exceeds 5 MB. Please upload a smaller file.')
+    return
   }
 
-  imagesPreview(selectedFiles);
+  imagesPreview(selectedFiles)
 }
 
 function imagesPreview(selectedFiles) {
-  const reader = new FileReader();
+  const reader = new FileReader()
 
   reader.onload = (event) => {
-    let imageUrl = event.target.result;
-    modelValue.value = selectedFiles[0];
-    state.value.fileViews = { name: selectedFiles[0].name, path: imageUrl };
-  };
+    const imageUrl = event.target.result
+    modelValue.value = selectedFiles[0]
+    fileViews.value = { name: selectedFiles[0].name, path: imageUrl }
+  }
 
   reader.onerror = () => {
-    toast.warning('Error reading file');
-    state.value.fileViews = null;
-    modelValue.value = null;
-  };
+    toast.warning('Error reading file')
+    fileViews.value = null
+    modelValue.value = null
+  }
 
-  reader.readAsDataURL(selectedFiles[0]);
+  reader.readAsDataURL(selectedFiles[0])
 }
 
 function removeImage() {
-  state.value.fileViews = null
+  fileViews.value = null
   modelValue.value = null
 }
 
 watch(() => props.modelValue, (newValue) => {
   modelValue.value = newValue ?? null
   if (!newValue) {
-    state.value.fileViews = null
+    fileViews.value = null
   }
 })
 
@@ -74,8 +72,8 @@ watch(modelValue, (newValue) => {
 <template>
   <label for="uploadFileSource" type="button"
     class="relative block w-full max-h-[10rem] md:max-h-[14rem] overflow-hidden rounded-lg bg-slate-800 text-center"
-    :class="[state.fileViews ?? 'p-12']">
-    <div v-if="!state.fileViews" class="h-full cursor-pointer flex flex-col items-center justify-center">
+    :class="[fileViews ? '' : 'p-12']">
+    <div v-if="!fileViews" class="h-full cursor-pointer flex flex-col items-center justify-center">
       <svg class="mx-auto h-12 w-12" stroke="currentColor" fill="none" viewBox="0 0 24 24" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round"
           d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
@@ -85,11 +83,11 @@ watch(modelValue, (newValue) => {
       </span>
 
       <input id="uploadFileSource" hidden type="file" accept="image/jpeg,image/jpg,image/png"
-        @change="e => onFileChange(e)">
+        @change="onFileChange">
     </div>
 
     <div v-else class="h-full">
-      <NuxtImg :src="state.fileViews.path" :title="state.fileViews.name" class="w-full h-full object-contain rounded-lg" />
+      <NuxtImg :src="fileViews.path" :title="fileViews.name" class="w-full h-full object-contain rounded-lg" />
       <button
         class="absolute cursor-pointer inline-flex items-center justify-center gap-x-1 text-sm bottom-2 left-1/3 rounded-full btn-sm bg-slate-800 hover:bg-slate-600 px-4 py-2"
         @click="removeImage">
