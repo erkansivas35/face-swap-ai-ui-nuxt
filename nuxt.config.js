@@ -3,7 +3,7 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
-  modules: ["@nuxt/fonts", "@nuxt/icon", "@nuxt/image", "@nuxt/ui"],
+  modules: ["@nuxt/fonts", "@nuxt/icon", "@nuxt/image", "@nuxt/ui", "@nuxtjs/sitemap", "@nuxtjs/robots"],
   vite: {
     plugins: [tailwindcss()],
   },
@@ -15,12 +15,12 @@ export default defineNuxtConfig({
   imports: {
     dirs: [
       // Scan top-level modules
-      'composables',
+      "composables",
       // ... or scan modules nested one level deep with a specific name and file extension
-      'composables/*/index.{ts,js,mjs,mts}',
+      "composables/*/index.{ts,js,mjs,mts}",
       // ... or scan all modules within given directory
-      'composables/**'
-    ]
+      "composables/**",
+    ],
   },
   app: {
     head: {
@@ -63,4 +63,8 @@ export default defineNuxtConfig({
     },
   },
   css: ["@/assets/style.css"],
+  site: {
+    url: "https://easyaitools.xyz",
+    name: "Free Face Swap AI - Online (No Signup)",
+  },
 });

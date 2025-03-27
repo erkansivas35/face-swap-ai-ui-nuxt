@@ -14,6 +14,8 @@
     "@nuxt/icon": "^1.11.0",
     "@nuxt/image": "^1.10.0",
     "@nuxt/ui": "^3.0.1",
+    "@nuxtjs/robots": "^5.2.8",
+    "@nuxtjs/sitemap": "^7.2.9",
     "@preline/collapse": "^3.0.0",
     "@preline/file-upload": "^3.0.0",
     "@preline/theme-switch": "^3.0.0",
