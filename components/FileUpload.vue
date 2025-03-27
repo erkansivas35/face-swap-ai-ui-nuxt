@@ -1,5 +1,4 @@
 <script setup>
-import { ref, watch } from 'vue'
 import { toast } from 'vue3-toastify'
 
 const props = defineProps({
@@ -16,11 +15,11 @@ const props = defineProps({
 
 const emit = defineEmits(['update:modelValue'])
 
-const state = ref({
+const state = useState('state', () => ({
   fileViews: null,
-})
+}))
 
-const modelValue = ref(props.modelValue ?? null)
+const modelValue = useState('state', () => props.modelValue ?? null)
 
 function onFileChange(e) {
   const selectedFiles = e.target.files || e.dataTransfer?.files;
@@ -90,7 +89,7 @@ watch(modelValue, (newValue) => {
     </div>
 
     <div v-else class="h-full">
-      <img :src="state.fileViews.path" :title="state.fileViews.name" class="w-full h-full object-contain rounded-lg">
+      <NuxtImg :src="state.fileViews.path" :title="state.fileViews.name" class="w-full h-full object-contain rounded-lg" />
       <button
         class="absolute cursor-pointer inline-flex items-center justify-center gap-x-1 text-sm bottom-2 left-1/3 rounded-full btn-sm bg-slate-800 hover:bg-slate-600 px-4 py-2"
         @click="removeImage">
