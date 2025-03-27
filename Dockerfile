@@ -1,23 +1,24 @@
-FROM node:22.9.0
-
-RUN mkdir -p /app/node_modules && chown -R node:node /app
+FROM node:lts as builder
 
 WORKDIR /app
 
-ARG NUXT_PUBLIC_BASE_URL
+ARG NUXT_PUBLIC_BASE_API_URL
 
-COPY package*.json ./
+COPY . .
 
-USER node
-
-RUN npm ci
-
-COPY --chown=node:node . .
-
-ENV NUXT_PUBLIC_BASE_URL=https://face-swap-api.erkansivas.xyz/api/
+ENV NUXT_PUBLIC_BASE_API_URL=https://face-swap-api.erkansivas.xyz/api/
 
 RUN npm run build
 
-EXPOSE 4173
+# Nuxt 3 production
+FROM node:lts
 
-ENTRYPOINT ["npm", "run", "preview", "--", "--host"]
+WORKDIR /app
+
+COPY --from=builder /app/.output  /app/.output
+
+ENV NITRO_PORT=80
+
+EXPOSE 80
+
+CMD [ "node", ".output/server/index.mjs" ]

@@ -1,8 +1,8 @@
 version: '2'
 
 services:
-  faceswap-ui:
-    image: erkansivas/faceswap-ui
+  faceswap-ui-nuxt:
+    image: erkansivas/faceswap-ui-nuxt
     ports:
-      - "4173:4173"
+      - "4173:3000"
     restart: unless-stopped

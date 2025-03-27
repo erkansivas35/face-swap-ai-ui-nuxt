@@ -31,7 +31,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/faceswap-ui:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/faceswap-ui-nuxt:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -43,10 +43,10 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           port: 22
           script: |
-            cd /home/erkan/docker-projects/faceswap-ui
+            cd /home/erkan/docker-projects/faceswap-ui-nuxt
             rm -rf docker-compose.yml
-            curl -o docker-compose.yml https://raw.githubusercontent.com/erkansivas35/face-swap-ai-ui/refs/heads/dev/docker-compose.yml
-            echo "NUXT_PUBLIC_BASE_URL=https://face-swap-api.erkansivas.xyz/api/" > .env
+            curl -o docker-compose.yml https://raw.githubusercontent.com/erkansivas35/face-swap-ai-ui-nuxt/refs/heads/main/docker-compose.yml
+            echo "NUXT_PUBLIC_BASE_API_URL=https://face-swap-api.erkansivas.xyz/api/" > .env
             docker-compose down
             docker-compose pull
             docker-compose up -d

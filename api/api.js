@@ -2,7 +2,7 @@ import { toast } from 'vue3-toastify'
 
 export async function useApiFetch(url, options = {}) {
   const config = useRuntimeConfig()
-  const baseURL = config.public.NUXT_PUBLIC_BASE_URL || ''
+  const baseURL = config.public.NUXT_PUBLIC_BASE_API_URL || ''
 
   try {
     const { data, error } = await useFetch(url, {

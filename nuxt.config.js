@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      NUXT_PUBLIC_BASE_URL: process.env.NUXT_PUBLIC_BASE_URL,
+      NUXT_PUBLIC_BASE_API_URL: process.env.NUXT_PUBLIC_BASE_API_URL,
     },
   },
   imports: {
