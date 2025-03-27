@@ -8,6 +8,8 @@ COPY . .
 
 ENV NUXT_PUBLIC_BASE_API_URL=https://face-swap-api.erkansivas.xyz/api/
 
+RUN npm install
+
 RUN npm run build
 
 # Nuxt 3 production
