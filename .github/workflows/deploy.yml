@@ -46,7 +46,7 @@ jobs:
             cd /home/erkan/docker-projects/faceswap-ui
             rm -rf docker-compose.yml
             curl -o docker-compose.yml https://raw.githubusercontent.com/erkansivas35/face-swap-ai-ui/refs/heads/dev/docker-compose.yml
-            echo "VITE_SERVICE_BASE_URL=https://face-swap-api.erkansivas.xyz/api/" > .env
+            echo "NUXT_PUBLIC_BASE_URL=https://face-swap-api.erkansivas.xyz/api/" > .env
             docker-compose down
             docker-compose pull
             docker-compose up -d

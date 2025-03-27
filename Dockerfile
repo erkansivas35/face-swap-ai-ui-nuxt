@@ -4,7 +4,7 @@ RUN mkdir -p /app/node_modules && chown -R node:node /app
 
 WORKDIR /app
 
-ARG VITE_SERVICE_BASE_URL
+ARG NUXT_PUBLIC_BASE_URL
 
 COPY package*.json ./
 
@@ -14,7 +14,7 @@ RUN npm ci
 
 COPY --chown=node:node . .
 
-ENV VITE_SERVICE_BASE_URL=https://face-swap-api.erkansivas.xyz/api/
+ENV NUXT_PUBLIC_BASE_URL=https://face-swap-api.erkansivas.xyz/api/
 
 RUN npm run build
 
