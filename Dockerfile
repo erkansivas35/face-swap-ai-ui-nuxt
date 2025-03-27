@@ -1,3 +1,4 @@
+# Nuxt 3 builder
 FROM node:lts as builder
 
 WORKDIR /app
