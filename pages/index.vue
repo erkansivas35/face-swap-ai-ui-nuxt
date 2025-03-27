@@ -96,7 +96,7 @@ async function fileUpload() {
         </svg>
 
         Upload & Start
-        <Icon name="heroicons-solid:sparkles" class="w-6 h-6 shrink-0" />
+        <Icon name="heroicons-solid:sparkles" class="text-xl" />
       </button>
     </div>
   </div>
