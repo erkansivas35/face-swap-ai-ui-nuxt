@@ -52,8 +52,12 @@ async function fileUpload() {
       <div
         class="mb-4 md:mb-0 md:row-span-2 md:col-span-4 w-full max-h-[20rem] md:max-h-[29rem] elative block overflow-hidden rounded-lg bg-slate-800 text-center">
         <div v-if="!pageState.isResult && !pageState.isUpload" class="h-full flex flex-col items-center justify-center">
-          <NuxtImg src="/images/face-swap-example-result.jpg" title="Example Result"
-            class="w-full object-contain rounded-lg" />
+          <NuxtImg
+            src="/images/face-swap-example-result.jpg"
+            title="Example Result"
+            class="w-full object-contain rounded-lg"
+            placeholder
+          />
         </div>
         <div v-if="pageState.isUpload"
           class="w-full h-[20rem] md:h-[29rem] max-h-[20rem] md:max-h-[29rem] flex items-center justify-center bg-gray-700">
@@ -68,8 +72,12 @@ async function fileUpload() {
         </div>
         <div v-if="pageState.isResult"
           class="flex items-center justify-center relative w-full h-[20rem] md:h-[29rem] max-h-[20rem] md:max-h-[29rem]">
-          <NuxtImg :src="pageState.finalResult?.resultImageUrl" :title="pageState.finalResult?.id"
-            class="h-auto sm:h-full object-contain rounded-lg" />
+          <NuxtImg
+            :src="pageState.finalResult?.resultImageUrl"
+            :title="pageState.finalResult?.id"
+            class="h-auto sm:h-full object-contain rounded-lg"
+            placeholder
+          />
         </div>
       </div>
 
