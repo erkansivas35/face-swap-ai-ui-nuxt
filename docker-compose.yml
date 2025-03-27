@@ -1,0 +1,8 @@
+version: '2'
+
+services:
+  faceswap-ui:
+    image: erkansivas/faceswap-ui
+    ports:
+      - "4173:4173"
+    restart: unless-stopped
