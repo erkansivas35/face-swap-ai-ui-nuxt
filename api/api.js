@@ -9,7 +9,6 @@ export async function useApiFetch(url, options = {}) {
       baseURL,
       ...options,
       headers: {
-        'Content-Type': 'application/json',
         ...(options.headers || {})
       },
       onRequest({ options }) {

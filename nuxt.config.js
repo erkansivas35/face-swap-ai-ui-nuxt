@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      apiBase: process.env.NUXT_PUBLIC_BASE_URL,
+      NUXT_PUBLIC_BASE_URL: process.env.NUXT_PUBLIC_BASE_URL,
     },
   },
   imports: {
@@ -57,6 +57,9 @@ export default defineNuxtConfig({
           `,
         },
       ],
+      bodyAttrs: {
+        class: "relative flex flex-col bg-slate-900 text-neutral-50",
+      },
     },
   },
   css: ["@/assets/style.css"],

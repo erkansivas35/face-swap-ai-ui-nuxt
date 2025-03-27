@@ -10,9 +10,6 @@ export const faceSwapService = {
     return await useApiFetch('/swap-faces', {
       method: 'POST',
       body: formData,
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
     })
   },
   // Get swap status
