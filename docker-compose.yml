@@ -4,5 +4,5 @@ services:
   faceswap-ui-nuxt:
     image: erkansivas/faceswap-ui-nuxt
     ports:
-      - "4173:3000"
+      - "4180:3002"
     restart: unless-stopped
