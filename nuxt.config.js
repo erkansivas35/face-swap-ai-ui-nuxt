@@ -41,6 +41,9 @@ export default defineNuxtConfig({
         { name: "viewport", content: "width=device-width, initial-scale=1.0" },
         { name: "google-adsense-account", content: "ca-pub-5724639008387317" },
       ],
+      link: [
+        { rel: 'shortcut icon', type: 'image/x-icon', href: '/favicon.ico' }
+      ],
       script: [
         { src: "https://www.googletagmanager.com/gtag/js?id=G-XRT6F61LK6", async: true },
         {

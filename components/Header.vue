@@ -4,10 +4,17 @@
   <header
     class="relative flex flex-wrap sm:justify-start sm:flex-nowrap w-full bg-slate-950 text-sm py-4 pb-6 dark:bg-slate-950">
     <nav class="w-full max-w-screen-lg mx-auto px-4 sm:flex sm:items-center sm:justify-between">
-      <div class="flex items-center justify-between">
-        <a class="flex-none text-xl font-semibold dark:text-white focus:outline-hidden focus:opacity-80" href="#"
+      <div class="w-full flex items-center justify-between">
+        <a class="flex items-center gap-x-4 text-xl font-semibold dark:text-white focus:outline-hidden focus:opacity-80" href="#"
           aria-label="Brand">
-          Face Swap AI
+          <NuxtImg
+            src="/images/logo.png"
+            width="40"
+            height="40"
+            class="h-auto sm:h-full object-contain rounded-lg"
+            placeholder
+          />
+          <span>Face Swap AI</span>
         </a>
         <div class="sm:hidden">
           <button type="button"
