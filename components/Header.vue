@@ -14,7 +14,7 @@
             class="h-auto sm:h-full object-contain rounded-lg"
             placeholder
           />
-          <span>Face Swap AI</span>
+          <span>Easy AI Tools</span>
         </a>
         <div class="sm:hidden">
           <button type="button"

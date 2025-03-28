@@ -24,7 +24,7 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      title: "Free Face Swap AI - Online (No Signup)",
+      title: "Free Easy AI Tools - Online (No Signup)",
       meta: [
         {
           name: "description",
@@ -32,7 +32,7 @@ export default defineNuxtConfig({
         },
         {
           name: "keywords",
-          content: "face swap, face swap online, face swap ai, face swap photos, face swap free, face swap no signup",
+          content: "easy ai tools, face swap, face swap online, face swap ai, face swap photos, face swap free, face swap no signup",
         },
         { name: "author", content: "EasyAiTools.xyz" },
         { name: "robots", content: "index, follow" },
@@ -68,6 +68,6 @@ export default defineNuxtConfig({
   css: ["@/assets/style.css"],
   site: {
     url: "https://easyaitools.xyz",
-    name: "Free Face Swap AI - Online (No Signup)",
+    name: "Free Easy AI Tools - Online (No Signup)",
   },
 });
