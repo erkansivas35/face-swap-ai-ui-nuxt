@@ -5,10 +5,21 @@
   <footer class="w-full max-w-5xl mx-auto text-sm py-8">
     <div class="py-6 border-t border-gray-200 dark:border-neutral-700">
       <div class="flex flex-wrap justify-between items-center gap-2">
-        <div>
+        <div class="flex flex-wrap items-center gap-2">
           <p class="text-xs text-gray-600 dark:text-neutral-400">
             © 2025 Easy AI Tools.
           </p>
+
+          <ul class="flex flex-wrap items-center">
+            <li
+              class="inline-block relative pe-4 text-xs last:pe-0 last-of-type:before:hidden before:absolute before:top-1/2 before:end-1.5 before:-translate-y-1/2 before:size-[3px] before:rounded-full before:bg-gray-400 dark:text-neutral-500 dark:before:bg-neutral-600">
+              <NuxtLink
+                class="text-xs text-gray-500 underline hover:text-gray-800 hover:decoration-2 focus:outline-hidden focus:decoration-2 dark:text-neutral-500 dark:hover:text-neutral-400"
+                to="/">
+                Face Swap Photo
+              </NuxtLink>
+            </li>
+          </ul>
         </div>
         <!-- End Col -->
 
@@ -21,8 +32,8 @@
               Contact
             </a>
           </li>
-          <li class="inline-block">
-            <!-- Dark Mode -->
+          <!-- Dark Mode -->
+          <!-- <li class="inline-block">
             <button type="button"
               class="hs-dark-mode hs-dark-mode-active:hidden relative flex justify-center items-center size-7 border border-gray-200 text-gray-500 rounded-full hover:bg-gray-200 focus:outline-hidden focus:bg-gray-200 dark:border-neutral-700 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
               data-hs-theme-click-value="dark">
@@ -51,8 +62,8 @@
                 <path d="m19.07 4.93-1.41 1.41"></path>
               </svg>
             </button>
-            <!-- End Dark Mode -->
-          </li>
+          </li> -->
+          <!-- End Dark Mode -->
         </ul>
         <!-- End List -->
       </div>
