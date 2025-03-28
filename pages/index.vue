@@ -43,7 +43,7 @@ async function fileUpload() {
 
 <template>
   <div>
-    <div class="mb-2 sm:mb-4 flex flex-col gap-2 sm:gap-6 px-8 py-2 sm:py-6">
+    <div class="mb-2 sm:mb-4 flex flex-col gap-2 sm:gap-6 px-8 py-2 sm:py-4">
       <h1 class="text-center text-2xl font-bold sm:text-5xl">Free AI Face Swap for Photos</h1>
       <h2 class="text-center text-sm sm:text-xl">Easily swap faces in photos for free.</h2>
     </div>

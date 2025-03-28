@@ -24,20 +24,16 @@ const items = [
 </script>
 
 <template>
-  <div>
-    <main>
-      <div class="w-full">
-        <Header />
-        <div class="relative max-w-screen-lg mx-auto p-4">
-          <slot />
-        </div>
+  <Header />
+  <main class="w-full">
+      <div class="relative max-w-5xl mx-auto p-4">
+        <slot />
       </div>
-    </main>
+  </main>
 
-    <footer class="relative flex flex-wrap sm:justify-start sm:flex-nowrap w-full bg-slate-950 text-sm py-2 dark:bg-slate-800">
-      <div class="w-full max-w-screen-lg mx-auto px-4">
-        <UNavigationMenu color="neutral" :items="items" class="w-full" />
-      </div>
-    </footer>
-  </div>
+  <footer class="w-full max-w-5xl mx-auto text-sm py-8 px-4 md:px-4 lg:px-0">
+    <div class="pt-5 mt-5 border-t border-neutral-700">
+      <UNavigationMenu color="neutral" :items="items" class="w-full" />
+    </div>
+  </footer>
 </template>

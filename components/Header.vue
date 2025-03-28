@@ -2,8 +2,8 @@
 
 <template>
   <header
-    class="relative flex flex-wrap sm:justify-start sm:flex-nowrap w-full bg-slate-950 text-sm py-4 pb-6 dark:bg-slate-950">
-    <nav class="w-full max-w-screen-lg mx-auto px-4 sm:flex sm:items-center sm:justify-between">
+    class="fixed flex flex-col top-0 left-0 py-4 bg-slate-950 dark:bg-slate-950 backdrop-blur-xl border-b border-neutral-700 flex flex-wrap md:justify-start md:flex-nowrap z-20 w-full">
+    <nav class="relative max-w-5xl w-full md:flex md:items-center md:justify-between md:gap-3 px-4 lg:mx-auto text-sm">
       <div class="w-full flex items-center justify-between">
         <a class="flex items-center gap-x-4 text-xl font-semibold dark:text-white focus:outline-hidden focus:opacity-80" href="#"
           aria-label="Brand">

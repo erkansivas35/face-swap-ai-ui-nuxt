@@ -61,7 +61,7 @@ export default defineNuxtConfig({
         },
       ],
       bodyAttrs: {
-        class: "relative flex flex-col bg-slate-900 text-neutral-50",
+        class: "relative flex flex-col pt-[5rem] bg-slate-900 text-neutral-50",
       },
     },
   },
