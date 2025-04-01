@@ -3,7 +3,16 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
-  modules: ["@nuxt/fonts", "@nuxt/icon", "@nuxt/image", "@nuxt/ui", "@nuxtjs/sitemap", "@nuxtjs/robots"],
+  modules: [
+    "@pinia/nuxt",
+    "@nuxt/fonts",
+    "@nuxt/icon",
+    "@nuxt/image",
+    "@nuxt/ui",
+    "@nuxtjs/sitemap",
+    "@nuxtjs/robots",
+    "dayjs-nuxt",
+  ],
   vite: {
     plugins: [tailwindcss()],
   },
@@ -32,7 +41,8 @@ export default defineNuxtConfig({
         },
         {
           name: "keywords",
-          content: "easy ai tools, face swap, face swap online, face swap ai, face swap photos, face swap free, face swap no signup",
+          content:
+            "easy ai tools, face swap, face swap online, face swap ai, face swap photos, face swap free, face swap no signup",
         },
         { name: "author", content: "EasyAiTools.xyz" },
         { name: "robots", content: "index, follow" },
@@ -41,9 +51,7 @@ export default defineNuxtConfig({
         { name: "viewport", content: "width=device-width, initial-scale=1.0" },
         { name: "google-adsense-account", content: "ca-pub-5724639008387317" },
       ],
-      link: [
-        { rel: 'shortcut icon', type: 'image/x-icon', href: '/favicon.ico' }
-      ],
+      link: [{ rel: "shortcut icon", type: "image/x-icon", href: "/favicon.ico" }],
       script: [
         { src: "https://www.googletagmanager.com/gtag/js?id=G-XRT6F61LK6", async: true },
         {
@@ -69,5 +77,30 @@ export default defineNuxtConfig({
   site: {
     url: "https://easyaitools.xyz",
     name: "Free Easy AI Tools - Online (No Signup)",
+  },
+  dayjs: {
+    locales: ["en"],
+    plugins: ["relativeTime", "utc", "timezone"],
+    defaultLocale: [
+      "en",
+      {
+        relativeTime: {
+          future: "in %s",
+          past: "%s ago",
+          s: "a few secondses",
+          m: "a minute",
+          mm: "%d minuteses",
+          h: "an hour",
+          hh: "%d hourses",
+          d: "a day",
+          dd: "%d dayses",
+          M: "a month",
+          MM: "%d monthseses",
+          y: "a year",
+          yy: "%d yearseses",
+        },
+      },
+    ],
+    defaultTimezone: "Europe/Istanbul",
   },
 });
