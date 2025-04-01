@@ -24,6 +24,7 @@
     "@preline/theme-switch": "^3.0.0",
     "@tailwindcss/vite": "^4.0.17",
     "autoprefixer": "^10.4.21",
+    "dayjs-nuxt": "^2.1.11",
     "dropzone": "^6.0.0-beta.2",
     "jquery": "^3.7.1",
     "lodash": "^4.17.21",
