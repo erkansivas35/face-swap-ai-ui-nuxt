@@ -34,7 +34,6 @@ const handleRegister = async () => {
     navigateTo('/');
   } catch (error) {
     formData.value = { ...formData.value }
-    console.log(error)
     pageState.value.isLoading = false
   }
 };
@@ -59,19 +58,15 @@ const handleRegister = async () => {
         <!-- Form -->
         <UForm :schema="schema" :state="formData" class="space-y-4" @submit.prevent="handleRegister">
           <div class="grid gap-y-4">
-            <!-- Form Group -->
             <UFormField label="Email address" name="email" class="block text-sm mb-2 dark:text-white">
               <input v-model="formData.email" type="email" id="email" name="email"
                 class="py-2.5 sm:py-3 px-4 block w-full border border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none bg-slate-950 dark:bg-slate-950 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
             </UFormField>
-            <!-- End Form Group -->
 
-            <!-- Form Group -->
             <UFormField label="Password" name="password" class="block text-sm mb-2 dark:text-white">
               <input v-model="formData.password" type="password" id="password" name="password"
                 class="py-2.5 sm:py-3 px-4 block w-full border border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none bg-slate-950 dark:bg-slate-950 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
             </UFormField>
-            <!-- End Form Group -->
 
             <!-- Checkbox -->
             <div class="flex items-center">
