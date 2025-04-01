@@ -19,7 +19,9 @@ const { data: historyFaceSwapList, pending: isLoading } = await useAsyncData(
     <h2 class="text-center text-sm sm:text-xl">History Face Swaps</h2>
   </div>
 
-  <div v-if="isLoading">Loading...</div>
+  <div v-if="isLoading" class="text-center">
+    Loading...
+  </div>
   <div v-else>
     <div class="flex flex-wrap gap-4">
       <div v-for="(item, index) in historyFaceSwapList" :key="index"
