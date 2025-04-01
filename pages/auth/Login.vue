@@ -1,3 +1,38 @@
+<script setup>
+import { ref } from 'vue';
+import { useAuthStore } from '@/store/auth.js';
+import { authService } from '@/api/services/authService.js'
+import { toast } from 'vue3-toastify'
+
+const { login } = useAuthStore();
+
+const service = authService
+
+const pageState = ref({
+  isLoading: false,
+})
+
+const formData = ref({
+  email: '',
+  password: '',
+})
+
+const handleLogin = async () => {
+  try {
+    pageState.value.isLoading = true
+
+    const res = await service.login(formData.value)
+    login(res.token);
+
+    toast.success('Login is successfully!')
+    navigateTo('/');
+  } catch (error) {
+    console.log(error)
+    pageState.value.isLoading = false
+  }
+};
+</script>
+
 <template>
   <div
     class="mt-4 max-w-2xl mx-auto border border-gray-200 rounded-xl shadow-2xs bg-slate-950 dark:bg-slate-950 dark:border-neutral-700">
@@ -15,68 +50,54 @@
 
       <div class="mt-6">
         <!-- Form -->
-        <form>
-          <div class="grid gap-y-4">
-            <!-- Form Group -->
-            <div>
-              <label for="email" class="block text-sm mb-2 dark:text-white">Email address</label>
-              <div class="relative">
-                <input type="email" id="email" name="email"
-                  class="py-2.5 sm:py-3 px-4 block w-full border border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none bg-slate-950 dark:bg-slate-950 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-                  required aria-describedby="email-error">
-                <div class="hidden absolute inset-y-0 end-0 pointer-events-none pe-3">
-                  <svg class="size-5 text-red-500" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"
-                    aria-hidden="true">
-                    <path
-                      d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
-                  </svg>
-                </div>
-              </div>
-              <p class="hidden text-xs text-red-600 mt-2" id="email-error">Please include a valid email address so we
-                can get back to you</p>
+        <div class="grid gap-y-4">
+          <!-- Form Group -->
+          <div>
+            <label for="email" class="block text-sm mb-2 dark:text-white">Email address</label>
+            <div class="relative">
+              <input v-model="formData.email" type="email" id="email" name="email"
+                class="py-2.5 sm:py-3 px-4 block w-full border border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none bg-slate-950 dark:bg-slate-950 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
             </div>
-            <!-- End Form Group -->
-
-            <!-- Form Group -->
-            <div>
-              <div class="flex flex-wrap justify-between items-center gap-2">
-                <label for="password" class="block text-sm mb-2 dark:text-white">Password</label>
-                <a class="inline-flex items-center gap-x-1 text-sm text-blue-600 decoration-2 hover:underline focus:outline-hidden focus:underline font-medium dark:text-blue-500"
-                  href="../examples/html/recover-account.html">Forgot password?</a>
-              </div>
-              <div class="relative">
-                <input type="password" id="password" name="password"
-                  class="py-2.5 sm:py-3 px-4 block w-full border border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none bg-slate-950 dark:bg-slate-950 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-                  required aria-describedby="password-error">
-                <div class="hidden absolute inset-y-0 end-0 pointer-events-none pe-3">
-                  <svg class="size-5 text-red-500" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"
-                    aria-hidden="true">
-                    <path
-                      d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
-                  </svg>
-                </div>
-              </div>
-              <p class="hidden text-xs text-red-600 mt-2" id="password-error">8+ characters required</p>
-            </div>
-            <!-- End Form Group -->
-
-            <!-- Checkbox -->
-            <div class="flex items-center">
-              <div class="flex">
-                <input id="remember-me" name="remember-me" type="checkbox"
-                  class="shrink-0 mt-0.5 border-gray-200 rounded-sm text-blue-600 focus:ring-blue-500 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800">
-              </div>
-              <div class="ms-3">
-                <label for="remember-me" class="text-sm dark:text-white">Remember me</label>
-              </div>
-            </div>
-            <!-- End Checkbox -->
-
-            <button type="submit"
-              class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">Sign
-              in</button>
           </div>
-        </form>
+          <!-- End Form Group -->
+
+          <!-- Form Group -->
+          <div>
+            <div class="flex flex-wrap justify-between items-center gap-2">
+              <label for="password" class="block text-sm mb-2 dark:text-white">Password</label>
+              <!-- <a class="inline-flex items-center gap-x-1 text-sm text-blue-600 decoration-2 hover:underline focus:outline-hidden focus:underline font-medium dark:text-blue-500"
+                href="../examples/html/recover-account.html">Forgot password?</a> -->
+            </div>
+            <div class="relative">
+              <input v-model="formData.password" type="password" id="password" name="password"
+                class="py-2.5 sm:py-3 px-4 block w-full border border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none bg-slate-950 dark:bg-slate-950 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+            </div>
+          </div>
+          <!-- End Form Group -->
+
+          <!-- Checkbox -->
+          <div class="flex items-center">
+            <div class="flex">
+              <input id="remember-me" name="remember-me" type="checkbox"
+                class="shrink-0 mt-0.5 border-gray-200 rounded-sm text-blue-600 focus:ring-blue-500 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800">
+            </div>
+            <div class="ms-3">
+              <label for="remember-me" class="text-sm dark:text-white">Remember me</label>
+            </div>
+          </div>
+          <!-- End Checkbox -->
+
+          <button :disabled="pageState.isLoading"
+            class="disabled:bg-slate-400 cursor-pointer w-full inline-flex items-center justify-center gap-x-1 rounded-md bg-indigo-600 px-3 py-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            @click="handleLogin">
+            Sign in
+            <svg v-if="pageState.isLoading" class="w-5 h-5 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none"
+              viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+            </svg>
+          </button>
+        </div>
         <!-- End Form -->
       </div>
     </div>

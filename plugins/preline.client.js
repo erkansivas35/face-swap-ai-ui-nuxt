@@ -16,6 +16,6 @@ export default defineNuxtPlugin(() => {
   const router = useRouter();
 
   router.afterEach(async () => {
-    // setTimeout(() => window.HSStaticMethods.autoInit());
+    setTimeout(() => window.HSStaticMethods.autoInit());
   });
 });
