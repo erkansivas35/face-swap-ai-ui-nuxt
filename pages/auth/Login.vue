@@ -7,7 +7,7 @@ import * as v from 'valibot'
 
 const schema = v.object({
   email: v.pipe(v.string(), v.email('Invalid email')),
-  password: v.pipe(v.string(), v.minLength(8, 'Must be at least 8 characters'))
+  password: v.pipe(v.string(), v.minLength(1, 'Password is required'))
 })
 
 const { login } = useAuthStore();
@@ -80,9 +80,8 @@ const handleLogin = async () => {
             </div>
             <!-- End Checkbox -->
 
-            <button :disabled="pageState.isLoading"
-              class="disabled:bg-slate-400 cursor-pointer w-full inline-flex items-center justify-center gap-x-1 rounded-md bg-indigo-600 px-3 py-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              @click="handleLogin">
+            <button :disabled="pageState.isLoading" type="submit"
+              class="disabled:bg-slate-400 cursor-pointer w-full inline-flex items-center justify-center gap-x-1 rounded-md bg-indigo-600 px-3 py-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
               Sign in
               <svg v-if="pageState.isLoading" class="w-5 h-5 animate-spin" xmlns="http://www.w3.org/2000/svg"
                 fill="none" viewBox="0 0 24 24">
