@@ -1,5 +1,4 @@
 <script setup>
-import { ref } from "vue"
 import { faceSwapService } from '@/api/services/faceSwapService.js'
 
 definePageMeta({
@@ -20,7 +19,7 @@ const { data: historyFaceSwapList, pending: isLoading } = await useAsyncData(
   <div v-else>
     <div v-for="(item, index) in historyFaceSwapList" :key="index">
       <span>{{ item.id }}</span>
-      <NuxtImg :src="`${window.location.origin}/${item.resultImage}`" :title="item.id"
+      <NuxtImg :src="`https://face-swap-api.erkansivas.xyz/uploads/${item.resultImage}`" :title="item.id"
         class="w-full h-full object-contain rounded-lg" />
     </div>
   </div>
