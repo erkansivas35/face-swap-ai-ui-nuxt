@@ -22,7 +22,7 @@ const handleLogin = async () => {
     pageState.value.isLoading = true
 
     const res = await service.login(formData.value)
-    login(res.token);
+    login(res);
 
     toast.success('Login is successfully!')
     navigateTo('/');

@@ -23,7 +23,7 @@ const handleRegister = async () => {
     pageState.value.isLoading = true
 
     const res = await service.register(formData.value)
-    login(res.token);
+    login(res);
 
     toast.success('Sing up is successfully!')
     navigateTo('/');

@@ -10,12 +10,16 @@ export const useAuthStore = () => {
 
   // State
   const loggedIn = ref(!!tokenCookie.value);
-  const user = ref(null);
+  const user = ref(userCookie.value ?? null);
 
   // Actions
-  const login = (token) => {
-    tokenCookie.value = token;
+  const login = (res) => {
+    tokenCookie.value = res.token;
     loggedIn.value = true;
+    userCookie.value = res.data;
+    setTimeout(() => {
+      window.HSStaticMethods.autoInit();
+    }, 200);
   };
 
   const logout = () => {
@@ -29,10 +33,6 @@ export const useAuthStore = () => {
     try {
       const res = await service.getUser();
       user.value = res.data;
-      userCookie.value = res.data;
-      setTimeout(() => {
-        window.HSStaticMethods.autoInit();
-      }, 200);
     } catch (error) {
       console.log(error);
     }
