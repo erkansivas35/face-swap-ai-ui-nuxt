@@ -32,7 +32,7 @@ export const useAuthStore = () => {
       userCookie.value = res.data;
       setTimeout(() => {
         window.HSStaticMethods.autoInit();
-      }, 0);
+      }, 200);
     } catch (error) {
       console.log(error);
     }
