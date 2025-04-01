@@ -15,15 +15,21 @@ export async function useApiFetch(url, options = {}) {
       },
       onRequest({ options }) {
         // You can add auth token here
-        // options.headers.Authorization = `Bearer ${token}`
+        options.headers.Authorization = tokenCookie.value ? `Bearer ${tokenCookie.value}` : "";
       },
       onResponseError({ response }) {
         if (response._data?.success === false && response._data.error?.message.includes("validation failed")) {
-          toast.error("The images could not be verified. Please try again.");
+          if (process.client || window) {
+            toast.error("The images could not be verified. Please try again.");
+          }
         } else if (response._data?.error?.message) {
-          toast.error(response._data.error.message);
+          if (process.client || window) {
+            toast.error(response._data.error.message);
+          }
         } else {
-          toast.error("An error occurred. Please try again.");
+          if (process.client || window) {
+            toast.error("An error occurred. Please try again.");
+          }
         }
       },
     });

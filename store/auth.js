@@ -33,6 +33,13 @@ export const useAuthStore = () => {
     try {
       const res = await service.getUser();
       user.value = res.data;
+      userCookie.value = res.data;
+
+      if (process.client || window) {
+        setTimeout(() => {
+          window.HSStaticMethods.autoInit();
+        }, 200);
+      }
     } catch (error) {
       console.log(error);
     }

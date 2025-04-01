@@ -68,7 +68,7 @@ const handleLogout = () => {
               </NuxtLink>
             </div>
             <div v-else>
-              <div>Hello, 👋 {{ user.name }}</div>
+              <div>Hello, 👋 {{ user.name ? user.name : user.email }}</div>
 
               <NuxtLink class="mt-2 flex items-center text-white font-medium focus:outline-hidden" to="/auth/dashboard">
                 Dashboard
@@ -98,7 +98,7 @@ const handleLogout = () => {
               <button id="hs-dropdown-with-header" type="button" class="hs-dropdown-toggle py-2 cursor-pointer"
                 aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
                 Hello, 👋
-                <span class="font-semibold">{{ user.name }}</span>
+                <span class="font-semibold">{{ user.name ? user.name : user.email }}</span>
               </button>
 
               <div
