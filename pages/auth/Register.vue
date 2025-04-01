@@ -3,6 +3,12 @@ import { ref } from 'vue';
 import { useAuthStore } from '@/store/auth.js';
 import { authService } from '@/api/services/authService.js'
 import { toast } from 'vue3-toastify'
+import * as v from 'valibot'
+
+const schema = v.object({
+  email: v.pipe(v.string(), v.email('Invalid email')),
+  password: v.pipe(v.string(), v.minLength(8, 'Must be at least 8 characters'))
+})
 
 const { login } = useAuthStore();
 
@@ -15,7 +21,6 @@ const pageState = ref({
 const formData = ref({
   email: '',
   password: '',
-  passwordConfirm: '',
 })
 
 const handleRegister = async () => {
@@ -28,6 +33,7 @@ const handleRegister = async () => {
     toast.success('Sing up is successfully!')
     navigateTo('/');
   } catch (error) {
+    formData.value = { ...formData.value }
     console.log(error)
     pageState.value.isLoading = false
   }
@@ -51,36 +57,20 @@ const handleRegister = async () => {
 
       <div class="mt-6">
         <!-- Form -->
-        <form>
+        <UForm :schema="schema" :state="formData" class="space-y-4" @submit.prevent="handleRegister">
           <div class="grid gap-y-4">
             <!-- Form Group -->
-            <div>
-              <label for="email" class="block text-sm mb-2 dark:text-white">Email address</label>
-              <div class="relative">
-                <input v-model="formData.email" type="email" id="email" name="email"
-                  class="py-2.5 sm:py-3 px-4 block w-full border border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none bg-slate-950 dark:bg-slate-950 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
-              </div>
-            </div>
+            <UFormField label="Email address" name="email" class="block text-sm mb-2 dark:text-white">
+              <input v-model="formData.email" type="email" id="email" name="email"
+                class="py-2.5 sm:py-3 px-4 block w-full border border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none bg-slate-950 dark:bg-slate-950 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+            </UFormField>
             <!-- End Form Group -->
 
             <!-- Form Group -->
-            <div>
-              <label for="password" class="block text-sm mb-2 dark:text-white">Password</label>
-              <div class="relative">
-                <input v-model="formData.password" type="password" id="password" name="password"
-                  class="py-2.5 sm:py-3 px-4 block w-full border border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none bg-slate-950 dark:bg-slate-950 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
-              </div>
-            </div>
-            <!-- End Form Group -->
-
-            <!-- Form Group -->
-            <div>
-              <label for="confirm-password" class="block text-sm mb-2 dark:text-white">Confirm Password</label>
-              <div class="relative">
-                <input v-model="formData.passwordConfirm" type="password" id="confirm-password" name="confirm-password"
-                  class="py-2.5 sm:py-3 px-4 block w-full border border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none bg-slate-950 dark:bg-slate-950 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
-              </div>
-            </div>
+            <UFormField label="Password" name="password" class="block text-sm mb-2 dark:text-white">
+              <input v-model="formData.password" type="password" id="password" name="password"
+                class="py-2.5 sm:py-3 px-4 block w-full border border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none bg-slate-950 dark:bg-slate-950 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+            </UFormField>
             <!-- End Form Group -->
 
             <!-- Checkbox -->
@@ -97,9 +87,8 @@ const handleRegister = async () => {
             </div>
             <!-- End Checkbox -->
 
-            <button :disabled="pageState.isLoading"
-              class="disabled:bg-slate-400 cursor-pointer w-full inline-flex items-center justify-center gap-x-1 rounded-md bg-indigo-600 px-3 py-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              @click="handleRegister">
+            <button :disabled="pageState.isLoading" type="submit"
+              class="disabled:bg-slate-400 cursor-pointer w-full inline-flex items-center justify-center gap-x-1 rounded-md bg-indigo-600 px-3 py-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
               Sign up
               <svg v-if="pageState.isLoading" class="w-5 h-5 animate-spin" xmlns="http://www.w3.org/2000/svg"
                 fill="none" viewBox="0 0 24 24">
@@ -108,7 +97,7 @@ const handleRegister = async () => {
               </svg>
             </button>
           </div>
-        </form>
+        </UForm>
         <!-- End Form -->
       </div>
     </div>

@@ -41,5 +41,8 @@ const { data: historyFaceSwapList, pending: isLoading } = await useAsyncData(
         </div>
       </div>
     </div>
+    <div v-if="historyFaceSwapList?.length === 0" class="text-center">
+      No history
+    </div>
   </div>
 </template>
