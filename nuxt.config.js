@@ -21,6 +21,10 @@ export default defineNuxtConfig({
       NUXT_PUBLIC_BASE_API_URL: process.env.NUXT_PUBLIC_BASE_API_URL,
     },
   },
+  routeRules: {
+    // Admin dashboard renders only on client-side
+    "/auth/**": { ssr: false },
+  },
   imports: {
     dirs: [
       // Scan top-level modules
