@@ -23,7 +23,7 @@ const { data: historyFaceSwapList, pending: isLoading } = await useAsyncData(
   <div v-else>
     <div class="flex flex-wrap gap-4">
       <div v-for="(item, index) in historyFaceSwapList" :key="index"
-        class="flex flex-col max-w-md border border-gray-200 shadow-2xs rounded-xl bg-slate-800 dark:border-neutral-700 dark:shadow-neutral-700/70">
+        class="w-[32%] flex flex-col border border-gray-200 shadow-2xs rounded-xl bg-slate-800 dark:border-neutral-700 dark:shadow-neutral-700/70">
         <NuxtImg :src="`https://face-swap-api.erkansivas.xyz/uploads/${item.resultImage}`" :title="item.id"
           class="w-full h-auto object-contain rounded-t-xl" />
         <div class="p-4 md:p-5">
