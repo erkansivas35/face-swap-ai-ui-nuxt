@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @import "preline/variants.css";
-/* @import "@nuxt/ui"; */
+@import "@nuxt/ui";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
