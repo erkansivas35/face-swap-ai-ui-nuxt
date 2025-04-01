@@ -19,6 +19,7 @@ const { data: historyFaceSwapList, pending: isLoading } = await useAsyncData(
   <div v-if="isLoading">Loading...</div>
   <div v-else>
     <div v-for="(item, index) in historyFaceSwapList" :key="index">
+      <span>{{ item.id }}</span>
       <NuxtImg :src="`${window.location.origin}/${item.resultImage}`" :title="item.id"
         class="w-full h-full object-contain rounded-lg" />
     </div>
