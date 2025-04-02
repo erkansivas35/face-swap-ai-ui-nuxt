@@ -202,7 +202,7 @@ const faqItems = useState('faqItems', () => ([
         <h2 class="text-xl font-bold mt-1 mb-4">Do you have a Question?</h2>
         <UAccordion :items="faqItems" labelKey="title" type="multiple">
           <template #leading="{ item }">
-            <span class="text-base font-bold">{{ item.label }}</span>
+            <span class="text-base font-bold text-left">{{ item.label }}</span>
           </template>
           <template #body="{ item }">
             <span class="text-sm text-gray-400">{{ item.content }}</span>
