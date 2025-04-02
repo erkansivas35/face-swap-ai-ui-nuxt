@@ -16,7 +16,7 @@
               <NuxtLink
                 class="text-xs text-gray-500 underline hover:text-gray-800 hover:decoration-2 focus:outline-hidden focus:decoration-2 dark:text-neutral-500 dark:hover:text-neutral-400"
                 to="/">
-                Face Swap Photo
+                Face Swap for Photo
               </NuxtLink>
             </li>
           </ul>

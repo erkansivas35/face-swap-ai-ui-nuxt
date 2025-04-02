@@ -46,7 +46,7 @@ export default defineNuxtConfig({
         {
           name: "keywords",
           content:
-            "easy ai tools, face swap, face swap online, face swap ai, face swap photos, face swap free, face swap no signup",
+            "easy ai tools, face swap, face swap online, face swap ai, face swap for photos, face swap free, face swap no signup",
         },
         { name: "author", content: "EasyAiTools.xyz" },
         { name: "robots", content: "index, follow" },

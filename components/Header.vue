@@ -54,7 +54,7 @@ const handleLogout = () => {
         <div class="block md:flex md:justify-center md:items-center md:gap-4">
           <div class="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:ps-5">
             <NuxtLink to="/" class="text-white font-medium focus:outline-hidden">
-              Face Swap Photo
+              Face Swap
             </NuxtLink>
           </div>
           <div class="mt-4 block sm:hidden">
