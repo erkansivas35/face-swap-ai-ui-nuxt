@@ -18,4 +18,18 @@ export const authService = {
       method: "GET",
     });
   },
+  verifyTurnstileToken: async (token) => {
+    const config = useRuntimeConfig();
+    const turnstileSecretKey = config.public.NUXT_TURNSTILE_SECRET_KEY || "";
+
+    console.log(turnstileSecretKey);
+
+    return await useApiFetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+      method: "POST",
+      body: {
+        secret: turnstileSecretKey,
+        response: token,
+      },
+    });
+  },
 };

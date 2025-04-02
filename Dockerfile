@@ -4,10 +4,12 @@ FROM node:lts as builder
 WORKDIR /app
 
 ARG NUXT_PUBLIC_BASE_API_URL
+ARG NUXT_TURNSTILE_SECRET_KEY
 
 COPY . .
 
 ENV NUXT_PUBLIC_BASE_API_URL=https://face-swap-api.erkansivas.xyz/api/
+ENV NUXT_TURNSTILE_SECRET_KEY=${NUXT_TURNSTILE_SECRET_KEY}
 
 RUN npm install
 

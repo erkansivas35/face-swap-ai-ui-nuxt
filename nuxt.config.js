@@ -12,13 +12,22 @@ export default defineNuxtConfig({
     "@nuxtjs/sitemap",
     "@nuxtjs/robots",
     "dayjs-nuxt",
+    "@nuxtjs/turnstile",
   ],
   vite: {
     plugins: [tailwindcss()],
   },
+  turnstile: {
+    siteKey: process.env.NUXT_TURNSTILE_SECRET_KEY,
+  },
   runtimeConfig: {
     public: {
       NUXT_PUBLIC_BASE_API_URL: process.env.NUXT_PUBLIC_BASE_API_URL,
+      NUXT_TURNSTILE_SECRET_KEY: process.env.NUXT_TURNSTILE_SECRET_KEY,
+    },
+    turnstile: {
+      // This can be overridden at runtime via the NUXT_TURNSTILE_SECRET_KEY
+      secretKey: process.env.NUXT_TURNSTILE_SECRET_KEY,
     },
   },
   routeRules: {

@@ -23,9 +23,20 @@ const formData = ref({
   password: '',
 })
 
+const token = ref(null)
+
 const handleRegister = async () => {
   try {
     pageState.value.isLoading = true
+
+    // Verify Turnstile Token
+    const validTokenResult = await service.verifyTurnstileToken(token.value);
+
+    if (!validTokenResult?.data?.success) {
+      toast.error('Invalid Turnstile verification. Please try again.');
+      pageState.value.isLoading = false;
+      return;
+    }
 
     const res = await service.register(formData.value)
     login(res);
@@ -81,6 +92,8 @@ const handleRegister = async () => {
               </div>
             </div>
             <!-- End Checkbox -->
+
+            <NuxtTurnstile v-model="token" />
 
             <button :disabled="pageState.isLoading" type="submit"
               class="disabled:bg-slate-400 cursor-pointer w-full inline-flex items-center justify-center gap-x-1 rounded-md bg-indigo-600 px-3 py-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
