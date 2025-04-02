@@ -67,7 +67,7 @@ const handleLogout = () => {
                 Register
               </NuxtLink>
             </div>
-            <div v-else>
+            <div v-else class="border-t border-gray-600 pt-3">
               <div>Hello, 👋 {{ user.name ? user.name : user.email }}</div>
 
               <NuxtLink class="mt-2 flex items-center text-white font-medium focus:outline-hidden" to="/auth/dashboard">
