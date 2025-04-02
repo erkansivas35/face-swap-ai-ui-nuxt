@@ -38,7 +38,7 @@ const { data: historyFaceSwapList, pending: isLoading } = await useAsyncData(
           class="w-full h-60 object-cover rounded-t-xl" />
         <div class="p-4 md:p-5">
           <h3 class="text-lg font-bold text-gray-800 dark:text-white">
-            {{ item._id }}
+            {{ item.id }}
           </h3>
           <p class="mt-1 text-gray-500 dark:text-neutral-400">
             Processing Time: {{ item.processingTime }}
