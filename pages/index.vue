@@ -40,7 +40,7 @@ async function fileUpload() {
   pageState.value.isUpload = false
 }
 
-const faqItems = ref([
+const faqItems = useState('faqItems', () => ([
   {
     title: '',
     label: 'What is Face Swap?',
@@ -89,8 +89,7 @@ const faqItems = ref([
     icon: 'i-lucide-circle-help',
     content: `Unfortunately, our face-swapping tool is designed exclusively for human faces. It detects and aligns human facial features to deliver accurate and realistic results.`
   }
-])
-
+]))
 </script>
 
 <template>
