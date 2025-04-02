@@ -20,18 +20,18 @@ const { data: historyFaceSwapList, pending: isLoading } = await useAsyncData(
   </div>
 
   <div v-if="isLoading" class="">
-    <div class="flex items-center gap-4">
-      <div class="grid gap-4 w-[32%]">
+    <div class="grid sm:grid-cols-12 gap-y-8 sm:gap-4">
+      <div class="grid gap-4 w-full sm:col-span-4">
         <USkeleton class="h-40 w-full rounded-lg" />
         <USkeleton class="h-6 w-ful" />
         <USkeleton class="h-6 w-ful" />
       </div>
-      <div class="grid gap-4 w-[32%]">
+      <div class="grid gap-4 w-full sm:col-span-4">
         <USkeleton class="h-40 w-full rounded-lg" />
         <USkeleton class="h-6 w-ful" />
         <USkeleton class="h-6 w-ful" />
       </div>
-      <div class="grid gap-4 w-[32%]">
+      <div class="grid gap-4 w-full sm:col-span-4">
         <USkeleton class="h-40 w-full rounded-lg" />
         <USkeleton class="h-6 w-ful" />
         <USkeleton class="h-6 w-ful" />
@@ -39,11 +39,11 @@ const { data: historyFaceSwapList, pending: isLoading } = await useAsyncData(
     </div>
   </div>
   <div v-else>
-    <div class="flex flex-wrap gap-4">
+    <div class="grid sm:grid-cols-12 gap-4">
       <div v-for="(item, index) in historyFaceSwapList" :key="index"
-        class="w-[32%] flex flex-col border border-gray-200 shadow-2xs rounded-xl bg-slate-800 dark:border-neutral-700 dark:shadow-neutral-700/70">
+        class="sm:col-span-4 flex flex-col border border-gray-200 shadow-2xs rounded-xl bg-slate-800 dark:border-neutral-700 dark:shadow-neutral-700/70">
         <NuxtImg :src="`https://face-swap-api.erkansivas.xyz/uploads/${item.resultImage}`" :title="item.id"
-          class="w-full h-auto object-contain rounded-t-xl" />
+          class="w-full h-60 object-cover rounded-t-xl" />
         <div class="p-4 md:p-5">
           <h3 class="text-lg font-bold text-gray-800 dark:text-white">
             {{ item._id }}
