@@ -2,11 +2,7 @@ import { ref } from "vue";
 import { authService } from "@/api/services/authService.js";
 
 export const useAuthStore = () => {
-  const cookieOptions = {
-    httpOnly: true,
-    secure: true,
-    maxAge: 60 * 60 * 24 * 7,
-  };
+  const cookieOptions = { maxAge: 60 * 60 * 24 * 7 };
 
   // Cookie
   const tokenCookie = useCookie("token", cookieOptions);
