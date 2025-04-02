@@ -18,12 +18,12 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
   },
   turnstile: {
-    siteKey: "0x4AAAAAABDhOP4zffpsybhz",
+    siteKey: process.env.NUXT_PUBLIC_TURNSTILE_SITE_KEY,
   },
   runtimeConfig: {
     public: {
       NUXT_PUBLIC_BASE_API_URL: process.env.NUXT_PUBLIC_BASE_API_URL,
-      NUXT_TURNSTILE_SECRET_KEY: process.env.NUXT_TURNSTILE_SECRET_KEY,
+      NUXT_PUBLIC_TURNSTILE_SITE_KEY: process.env.NUXT_PUBLIC_TURNSTILE_SITE_KEY,
     },
     turnstile: {
       // This can be overridden at runtime via the NUXT_TURNSTILE_SECRET_KEY
