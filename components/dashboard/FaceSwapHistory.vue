@@ -40,7 +40,7 @@ const { data: historyFaceSwapList, pending: isLoading } = await useAsyncData(
           <h3 class="text-lg font-bold text-gray-800 dark:text-white">
             {{ item.id }}
           </h3>
-          <p class="mt-1 text-gray-500 dark:text-neutral-400">
+          <p class="mt-1 text-sm text-gray-500 dark:text-neutral-400">
             Processing Time: {{ item.processingTime }}
           </p>
           <p class="mt-5 text-xs text-gray-500 dark:text-neutral-500">
