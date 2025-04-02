@@ -146,9 +146,9 @@ const faqItems = useState('faqItems', () => ([
       </div>
     </div>
 
-    <div class="mt-20">
-      <div class="grid grid-cols-12 items-center gap-x-10">
-        <div class="order-2 col-span-4 h-100">
+    <div class="mt-10 sm:mt-20">
+      <div class="block sm:grid grid-cols-12 items-center gap-x-10">
+        <div class="order-2 col-span-4 h-100 mb-8 sm:mb-0">
           <NuxtImg src="/images/ai-face-swapping.jpg" title="AI Face Swapping" alt="AI Face Swapping"
             class="w-full h-full object-cover rounded-lg" placeholder />
           <div class="mt-1 text-xs text-gray-500">
@@ -172,8 +172,8 @@ const faqItems = useState('faqItems', () => ([
         </div>
       </div>
 
-      <div class="mt-30 grid grid-cols-12 items-center gap-x-10">
-        <div class="order-1 col-span-5 h-100">
+      <div class="mt-10 sm:mt-30 block sm:grid grid-cols-12 items-center gap-x-10">
+        <div class="order-1 col-span-5 h-100 mb-8 sm:mb-0">
           <NuxtImg src="/images/realistic-ai-face-swap.jpg" title="AI Face Swapping" alt="AI Face Swapping"
             class="w-full h-full object-cover rounded-lg" placeholder />
           <div class="mt-1 text-xs text-right text-gray-500">
@@ -197,7 +197,7 @@ const faqItems = useState('faqItems', () => ([
         </div>
       </div>
 
-      <div class="mt-30">
+      <div class="mt-10 sm:mt-30">
         <span class="text-sm">Frequently Asked Question</span class="text-sm">
         <h2 class="text-xl font-bold mt-1 mb-4">Do you have a Question?</h2>
         <UAccordion :items="faqItems" labelKey="title" type="multiple">
