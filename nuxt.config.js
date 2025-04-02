@@ -18,7 +18,7 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
   },
   turnstile: {
-    siteKey: process.env.NUXT_TURNSTILE_SECRET_KEY,
+    siteKey: "0x4AAAAAABDhOP4zffpsybhz",
   },
   runtimeConfig: {
     public: {
