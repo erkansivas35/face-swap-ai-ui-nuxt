@@ -93,6 +93,11 @@ export default defineNuxtConfig({
   },
   sitemap: {
     xsl: false,
+    defaults: {
+      changefreq: "daily",
+      priority: 1,
+      lastmod: new Date().toISOString(),
+    },
   },
   dayjs: {
     locales: ["en"],
