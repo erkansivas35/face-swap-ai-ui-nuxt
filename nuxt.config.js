@@ -91,6 +91,9 @@ export default defineNuxtConfig({
     url: "https://easyaitools.xyz",
     name: "Free Easy AI Tools - Online (No Signup)",
   },
+  sitemap: {
+    xsl: false,
+  },
   dayjs: {
     locales: ["en"],
     plugins: ["relativeTime", "utc", "timezone"],
