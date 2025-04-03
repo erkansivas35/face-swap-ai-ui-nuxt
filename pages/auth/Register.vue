@@ -1,6 +1,8 @@
 <script setup>
-import { ref } from 'vue';
-import { useAuthStore } from '@/store/auth.js';
+import { ref } from 'vue'
+import TermsOfService from '@/pages/terms-of-service.vue'
+import PrivacyPolicy from '@/pages/privacy-policy.vue'
+import { useAuthStore } from '@/store/auth.js'
 import { authService } from '@/api/services/authService.js'
 import { toast } from 'vue3-toastify'
 import * as v from 'valibot'
@@ -21,6 +23,7 @@ const pageState = ref({
 const formData = ref({
   email: '',
   password: '',
+  isAcceptPolicy: false
 })
 
 const turnStileToken = ref(null)
@@ -79,20 +82,35 @@ const handleRegister = async () => {
             <!-- Checkbox -->
             <div class="flex items-center">
               <div class="flex">
-                <input id="remember-me" name="remember-me" type="checkbox"
+                <input id="remember-me" v-model="formData.isAcceptPolicy" name="remember-me" type="checkbox"
                   class="shrink-0 mt-0.5 border-gray-200 rounded-sm text-blue-600 focus:ring-blue-500 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800">
               </div>
               <div class="ms-3">
-                <label for="remember-me" class="text-sm dark:text-white">I accept the <a
-                    class="text-blue-600 decoration-2 hover:underline focus:outline-hidden focus:underline font-medium dark:text-blue-500"
-                    href="#">Terms and Conditions</a></label>
+                <label for="remember-me" class="text-sm dark:text-white">
+                  By registering, you agree to Easy AI Tools's
+                  <UModal title="Terms of Service">
+                    <a class="text-blue-600 decoration-2 cursor-pointer hover:underline focus:outline-hidden focus:underline font-medium dark:text-blue-500"
+                      href="#">Terms of Service</a>
+                    <template #body>
+                      <TermsOfService />
+                    </template>
+                  </UModal>
+                  and
+                  <UModal title="Terms of Service">
+                    <a class="text-blue-600 decoration-2 cursor-pointer hover:underline focus:outline-hidden focus:underline font-medium dark:text-blue-500"
+                      href="#">Privacy Policy</a>
+                    <template #body>
+                      <PrivacyPolicy />
+                    </template>
+                  </UModal>.
+                </label>
               </div>
             </div>
             <!-- End Checkbox -->
 
             <NuxtTurnstile v-model="turnStileToken" />
 
-            <button :disabled="pageState.isLoading || !turnStileToken" type="submit"
+            <button :disabled="!formData.isAcceptPolicy || pageState.isLoading || !turnStileToken" type="submit"
               class="disabled:bg-slate-400 cursor-pointer w-full inline-flex items-center justify-center gap-x-1 rounded-md bg-indigo-600 px-3 py-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
               Sign up
               <svg v-if="pageState.isLoading" class="w-5 h-5 animate-spin" xmlns="http://www.w3.org/2000/svg"
