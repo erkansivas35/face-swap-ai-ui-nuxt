@@ -102,7 +102,7 @@ const faqItems = useState('faqItems', () => ([
     <div>
       <div class="relative block md:grid md:grid-rows-2 md:grid-cols-6 md:grid-flow-col md:gap-4">
         <div
-          class="mb-4 md:mb-0 md:row-span-2 md:col-span-4 w-full max-h-[20rem] md:max-h-[29rem] elative block overflow-hidden rounded-lg bg-slate-800 text-center">
+          class="mb-4 md:mb-0 md:row-span-2 md:col-span-4 w-full max-h-[20rem] md:max-h-[29rem] relative block overflow-hidden rounded-lg bg-slate-800 text-center">
           <div v-if="!pageState.isResult && !pageState.isUpload"
             class="h-full flex flex-col items-center justify-center">
             <NuxtImg src="/images/face-swap-example-result.jpg" title="Example Result" alt="Example Result"
