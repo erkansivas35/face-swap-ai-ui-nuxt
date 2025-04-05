@@ -10,7 +10,7 @@
         <a class="flex-none font-semibold text-xl text-black focus:outline-hidden focus:opacity-80 dark:text-white"
           href="#" aria-label="Brand">Easy AI Tools</a>
         <p class="mt-3 text-xs sm:text-sm text-gray-600 dark:text-neutral-400">
-          © 2025 Easy AI Tools.
+          © 2025 Easy AI Tools. All rights reserved.
         </p>
       </div>
       <!-- End Col -->
@@ -59,7 +59,7 @@
           <p>
             <NuxtLink
               class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800 focus:outline-hidden focus:text-gray-800 dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200"
-              :to="{ name: 'index', query: { 'face-swap-app': true } }">
+              to="/face-swap">
               Face Swap for Photo
             </NuxtLink>
           </p>
@@ -81,7 +81,7 @@
       </div>
       <!-- End Col -->
 
-      <div>
+      <div v-if="false">
         <h4 class="text-xs font-semibold text-gray-900 uppercase dark:text-neutral-100">Let's get social</h4>
 
         <div class="mt-3 grid space-y-3 text-sm">
@@ -126,7 +126,7 @@
             <a class="flex-none font-semibold text-xl text-black focus:outline-hidden focus:opacity-80 dark:text-white"
               href="#" aria-label="Brand">Easy AI Tools</a>
             <p class="mt-1 text-xs sm:text-sm text-gray-600 dark:text-neutral-400">
-              © 2025 Easy AI Tools.
+              © 2025 Easy AI Tools. All rights reserved.
             </p>
           </div>
         </div>
