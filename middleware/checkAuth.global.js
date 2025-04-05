@@ -8,4 +8,9 @@ export default defineNuxtRouteMiddleware((to, from) => {
   if (tokenCookie.value && !userCookie.value) {
     getUser();
   }
+
+  // CUSTOM 404 PAGE
+  if (!to.matched.length) {
+    return navigateTo("/404");
+  }
 });
