@@ -52,11 +52,13 @@ const handleLogout = () => {
         class="hidden hs-collapse overflow-hidden transition-all duration-300 basis-full grow sm:block"
         aria-labelledby="hs-navbar-example-collapse">
         <div class="block md:flex md:justify-center md:items-center md:gap-4">
-          <div class="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:ps-5">
-            <NuxtLink to="/" class="text-white font-medium focus:outline-hidden">
+          <div class="flex flex-col gap-1 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:ps-5">
+            <NuxtLink to="/"
+              class="px-2 sm:px-4 py-2 text-white font-medium rounded-md hover:bg-gray-700/50 hover:text-gray-200 focus:outline-hidden">
               Home
             </NuxtLink>
-            <NuxtLink to="/face-swap" class="text-white font-medium focus:outline-hidden">
+            <NuxtLink to="/face-swap"
+              class="px-2 sm:px-4 py-2  text-white font-medium rounded-md hover:bg-gray-700/50 hover:text-gray-200 focus:outline-hidden">
               Face Swap Photo
             </NuxtLink>
           </div>
@@ -71,12 +73,15 @@ const handleLogout = () => {
               </NuxtLink>
             </div>
             <div v-else class="border-t border-gray-600 pt-3">
-              <div>Hello, 👋 {{ user.name ? user.name : user.email }}</div>
+              <div class="px-2">Hello, 👋 {{ user.name ? user.name : user.email }}</div>
 
-              <NuxtLink class="mt-2 flex items-center text-white font-medium focus:outline-hidden" to="/auth/dashboard">
+              <NuxtLink
+                class="block mt-2 px-2 sm:px-4 py-2 text-white font-medium rounded-md hover:bg-gray-700/50 hover:text-gray-200 focus:outline-hidden"
+                to="/auth/dashboard">
                 Dashboard
               </NuxtLink>
-              <button class="mt-2 w-full cursor-pointer flex items-center text-white font-medium focus:outline-hidden"
+              <button
+                class="block w-full text-left px-2 sm:px-4 py-2 text-white font-medium rounded-md hover:bg-gray-700/50 hover:text-gray-200 focus:outline-hidden"
                 @click="handleLogout">
                 Logout
               </button>
